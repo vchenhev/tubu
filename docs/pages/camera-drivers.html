@@ -1,6 +1,6 @@
-<article id="camera-drivers" data-title="相机类型与连接参数" data-category="相机与采集" data-summary="按网口、采集卡与本地仿真分类，核对每种相机驱动的设备选择字段和配置文件。" data-order="21" data-updated="2026-11-12" data-keywords="海康 DALSA ITEK DVP 大华 INS CIS CameraLink CXP 本地相机">
+<article id="camera-drivers" data-title="相机类型与连接参数" data-category="相机与采集" data-summary="按网口、采集卡与本地仿真分类，核对每种相机驱动的设备选择字段和配置文件。" data-order="21" data-updated="2026-11-23" data-keywords="海康 DALSA ITEK DVP 大华 INS CIS CameraLink CXP 本地相机">
   <h2 id="selection">先选择驱动和连接方式</h2>
-  <p>软件提供以下驱动接入方式；实际下拉选项以安装的相机插件为准，不能据此认为某品牌全部型号都可直接使用。先在厂商工具中确认设备可用、名称与枚举顺序，再选择匹配驱动。连接方式相同也不能互换不同厂商的驱动。</p>
+  <p>软件提供以下驱动接入方式；下拉列表展示支持的类型，连接时仍须提供对应插件和厂商运行环境，不能据此认为某品牌全部型号都可直接使用。先在厂商工具中确认设备可用、名称与枚举顺序，再选择匹配驱动。连接方式相同也不能互换不同厂商的驱动。</p>
   <table><thead><tr><th>分类</th><th>驱动</th></tr></thead><tbody>
     <tr><td>网口与按名称连接</td><td>HIKGige、DalsaGige、GigeITEKCamera、DVPGigeCamera、DaHuaGige</td></tr>
     <tr><td>CameraLink 与采集卡</td><td>DalsaCamlink、ITEKCamlink、HIKCamlinkCamera、HIKCamlinkCameraV2、DaHuaCamlink</td></tr>
@@ -84,6 +84,7 @@
     <figcaption>GigE Vision 板卡 配置演示。核对当前驱动、连接字段与图像配置，示例值不对应真实设备。</figcaption>
   </figure>
   <h3>INS 采集卡 InsCHVSCLCameraTool</h3>
+  <p>INS 与 CIS 两个入口使用同一套 INS CHVS SDK，分别应用对应的参数配置。实际传输方式以设备枚举和配套配置文件为准，不只根据下拉名称判断为网口或 CameraLink。</p>
   <p>填写“设备索引”，选择由配套工具生成的配置文件。软件显示名称用于日志识别；连接使用设备索引，不使用 IP 或设备名称。配置加载失败时保留 SDK 原始错误及文件路径。</p>
   <figure>
     <img data-image="assets/screenshots/cameras/camera-driver-inschvsclcameratool.js" alt="INS 采集卡相机驱动的配置字段与文件选项"/>
@@ -97,7 +98,7 @@
   </figure>
   <h2 id="local">本地图片仿真</h2>
   <h3>本地相机 LocalCamera</h3>
-  <p>选择“图片加载路径”，填写“采集间隔”，单位毫秒；有效范围 200～5000，未设置或无效时使用 1000。文件按名称排序后循环出图；不需要 IP、设备名称、板卡索引或相机配置文件。连接成功仅说明本地图片可加载，不能代替真实相机通信验证。</p>
+  <p>选择“图片加载路径”，填写“采集间隔”，单位毫秒；有效范围 100～5000，默认 1000，越界值须修正后才能连接。文件按名称排序后循环出图；不需要 IP、设备名称、板卡索引或相机配置文件。连接成功仅说明本地图片可加载，不能代替真实相机通信验证。硬件相机的临时回放入口见<a href="#cameras/local-simulation">本地相机仿真</a>。</p>
   <figure>
     <img data-image="assets/screenshots/cameras/camera-driver-localcamera.js" alt="本地相机相机驱动的配置字段与文件选项"/>
     <figcaption>本地相机 配置演示。核对当前驱动、连接字段与图像配置，示例值不对应真实设备。</figcaption>
